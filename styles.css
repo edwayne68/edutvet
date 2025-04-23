@@ -1,0 +1,203 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradient background */
+}
+
+/* Navbar */
+header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+header nav a {
+  transition: color 0.3s ease;
+}
+
+/* General hover effect for navigation links */
+nav a {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+nav a:hover {
+  color: #1d4ed8; /* Change text color to blue */
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #1d4ed8; /* Blue underline */
+  left: 50%;
+  bottom: -2px;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 100%; /* Expand underline on hover */
+}
+
+/* Hero Section */
+section.bg-blue-50 {
+  background-color: #f0f9ff;
+}
+
+section.bg-blue-50 h2 {
+  font-size: 2.5rem;
+}
+
+/* Input Field */
+input#searchInput {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input#searchInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Featured Documents */
+section#documents h3 {
+  font-size: 1.75rem;
+}
+
+section#documents .grid div {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section#documents .grid div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+footer a {
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #3b82f6;
+}
+
+/* Slider Container */
+.slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden; /* Hide overflowing slides */
+  position: relative;
+  padding: 0 1rem; /* Add padding for better alignment */
+}
+
+/* Slider Wrapper */
+.slider {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Slides */
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Individual Slide */
+.slide {
+  flex-shrink: 0;
+  width: 100%; /* Each slide takes up 100% of the container width */
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the entire image is visible */
+  border-radius: 8px; /* Add rounded corners */
+}
+
+/* Navigation Buttons */
+button {
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  footer .flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer .flex div {
+    margin-bottom: 1.5rem;
+  }
+
+  .slide img {
+    height: auto; /* Ensure images scale properly on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .slide img {
+    height: 8rem; /* Further reduce height for very small screens */
+  }
+}
+
+/* Form Container */
+form {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button:hover {
+  background-color: #2563eb; /* Darker blue */
+  transform: scale(1.05);
+}
+
+/* Input Fields */
+input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Password Toggle Button */
+#togglePassword {
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+#togglePassword:hover {
+  color: #2563eb;
+}

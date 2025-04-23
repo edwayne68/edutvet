@@ -1,0 +1,86 @@
+/* General Styles */
+<body lang="en">
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradient background */
+</body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upload documents to EduTVET for teaching, learning, and professional growth.">
+/* Navbar */oad Document - EduTVET</title>
+header {href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); <!-- Link to the custom stylesheet -->
+}/head>
+
+header h1 {="bg-gray-50 text-gray-800">
+  font-size: 1.5rem;
+} <!-- Navbar -->
+  <header class="bg-white shadow">
+header nav a {="container mx-auto px-4 py-4 flex justify-between items-center">
+  transition: color 0.3s ease;-bold text-blue-600">EduTVET</h1>
+}     <nav class="space-x-4">
+        <a href="documents.html" class="text-gray-700 hover:text-blue-600" aria-label="Go to Documents page">Documents</a>
+/* General hover effect for navigation links */00 hover:text-blue-600" aria-label="Go to Home page">Home</a>
+nav a {/nav>
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+  <!-- Upload Section -->
+nav a:hover {ass="container mx-auto px-4 py-16">
+  color: #1d4ed8; /* Change text color to blue */ext-center mb-8">Upload New Document</h2>
+}   <p class="text-center text-gray-600 mb-12">Share your resources with the EduTVET community by uploading approved documents for teaching and learning.</p>
+
+nav a::after {d Form -->
+  content: '';uploadForm" class="space-y-6 max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+  position: absolute;
+  width: 0;bel for="file" class="block font-medium text-gray-700">Document File</label>
+  height: 2px; type="file" id="file" name="file" accept=".pdf,.docx,.pptx" class="mt-2 block w-full p-2 border border-gray-300 rounded" required>
+  background: #1d4ed8; /* Blue underline */1">Accepted formats: PDF, DOCX, PPTX. Max size: 5MB.</p>
+  left: 50%;
+  bottom: -2px;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);ss="block font-medium text-gray-700">Document Title</label>
+}       <input type="text" id="title" name="title" class="mt-2 block w-full p-2 border border-gray-300 rounded" placeholder="Title of the document" required>
+      </div>
+nav a:hover::after {
+  width: 100%; /* Expand underline on hover */
+}       <label for="category" class="block font-medium text-gray-700">Category</label>
+        <input type="text" id="category" name="category" class="mt-2 block w-full p-2 border border-gray-300 rounded" placeholder="Agriculture, ICT, Business, etc." required>
+/* Hero Section */
+section.bg-blue-50 {
+  background-color: #f0f9ff;
+}       <label for="level" class="block font-medium text-gray-700">Level</label>
+        <select id="level" name="level" class="mt-2 block w-full p-2 border border-gray-300 rounded" required>
+section.bg-blue-50 h2 {="">Select Level</option>
+  font-size: 2.5rem;lue="Level 4">Level 4</option>
+}         <option value="Level 5">Level 5</option>
+          <option value="Level 6">Level 6</option>
+/* Input Field */
+input#searchInput {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}     <div>
+        <label for="description" class="block font-medium text-gray-700">Description</label>
+input#searchInput:focus {cription" name="description" class="mt-2 block w-full p-2 border border-gray-300 rounded" placeholder="Provide a brief description of the document" required></textarea>
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}     <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 w-full">Upload Document</button>
+    </form>
+/* Featured Documents */
+section#documents h3 {ages -->
+  font-size: 1.75rem;" class="text-center mt-4 hidden">
+}     <p id="successMessage" class="text-green-600 font-semibold hidden">Document uploaded successfully!</p>
+      <p id="errorMessage" class="text-red-600 font-semibold hidden">Failed to upload document. Please try again.</p>
+section#documents .grid div {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}   <!-- Back to Documents Button -->
+    <div class="text-center mt-8">
+section#documents .grid div:hover {s="text-blue-600 hover:underline">← Back to Documents</a>
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  <!-- Footer -->
+/* Footer */ass="bg-gray-900 text-white py-6 text-center">
+footer {copy; 2025 EduTVET. All rights reserved.</p>
+  background-color: #1f2937;
+  color: #ffffff;
+} <script>
+    import config from './scripts/config.json'; // Updated path

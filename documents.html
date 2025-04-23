@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse and download TVET documents categorized by type and level.">
+  <title>EduTVET - Documents</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    let currentType = 'Notes';
+    let currentLevel = 'All';
+
+    function setFilter(type, level) {
+      currentType = type || currentType;
+      currentLevel = level || currentLevel;
+      filterDocuments();
+    }
+
+    function filterDocuments() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".document-card");
+
+      if (!query) {
+        cards.forEach((card) => card.classList.remove("hidden"));
+        return;
+      }
+
+      cards.forEach((card) => {
+        const type = card.getAttribute("data-type").toLowerCase();
+        const level = card.getAttribute("data-level").toLowerCase();
+        const title = card.querySelector("h4").textContent.toLowerCase();
+
+        const matchesQuery = title.includes(query) || type.includes(query) || level.includes(query);
+        card.classList.toggle("hidden", !matchesQuery);
+      });
+    }
+  </script>
+  <script src="scripts.js"></script>
+  <script type="module">
+    import config from './scripts/config.json'; // Updated path
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">EduTVET</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="/upload.html" class="text-gray-700 hover:text-blue-600">Upload</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-50 py-16 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-4 text-blue-700">Find the Documents You Need</h2>
+      <p class="text-lg text-gray-700 mb-6">Browse notes, curriculums, standards, and more categorized by level.</p>
+      <div class="max-w-lg mx-auto mb-6">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search documents..." 
+          class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-blue-200"
+          oninput="filterDocuments()"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="bg-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-6">
+        <button onclick="setFilter('Notes')" class="bg-blue-600 text-white px-4 py-2 rounded mx-2 hover:bg-blue-700" aria-label="Filter by Notes">Notes</button>
+        <button onclick="setFilter('Curriculum')" class="bg-blue-100 hover:bg-blue-200 px-4 py-2 rounded mx-2">Curriculum</button>
+        <button onclick="setFilter('Occupational Standards')" class="bg-blue-100 hover:bg-blue-200 px-4 py-2 rounded mx-2">Occupational Standards</button>
+        <button onclick="setFilter('Planning Documents')" class="bg-blue-100 hover:bg-blue-200 px-4 py-2 rounded mx-2">Planning Documents</button>
+      </div>
+      <div>
+        <button onclick="setFilter(null, 'All')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded mx-1">All Levels</button>
+        <button onclick="setFilter(null, '4')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded mx-1">Level 4</button>
+        <button onclick="setFilter(null, '5')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded mx-1">Level 5</button>
+        <button onclick="setFilter(null, '6')" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded mx-1">Level 6</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="document-card bg-white p-4 rounded shadow" data-type="Notes" data-level="4">
+          <h4 class="font-bold text-lg mb-2">Crop Notes Level 4</h4>
+          <p class="text-sm mb-2">Type: Notes | Level: 4</p>
+          <a href="#" class="text-blue-600 hover:underline">Download</a>
+        </div>
+        <div class="document-card bg-white p-4 rounded shadow" data-type="Curriculum" data-level="5">
+          <h4 class="font-bold text-lg mb-2">TVET Curriculum Level 5</h4>
+          <p class="text-sm mb-2">Type: Curriculum | Level: 5</p>
+          <a href="#" class="text-blue-600 hover:underline">Download</a>
+        </div>
+        <div class="document-card bg-white p-4 rounded shadow" data-type="Occupational Standards" data-level="6">
+          <h4 class="font-bold text-lg mb-2">Safety Standards Level 6</h4>
+          <p class="text-sm mb-2">Type: Occupational Standards | Level: 6</p>
+          <a href="#" class="text-blue-600 hover:underline">Download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>&copy; 2025 EduTVET. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

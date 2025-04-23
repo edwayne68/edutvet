@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Approve Documents</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <section class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-blue-700 text-center mb-8">Admin Dashboard</h2>
+    <div id="loading" class="text-center text-blue-600 font-semibold mb-4 hidden">Loading documents...</div>
+    <div id="documentsList" class="space-y-4">
+      <!-- Documents will be dynamically loaded here -->
+    </div>
+    <div id="noDocuments" class="text-center text-gray-500 font-semibold hidden">No documents awaiting approval.</div>
+  </section>
+
+  <script>
+    import config from './scripts/config.json'; // Updated path
+
+    // Check if the user is an admin
+    document.addEventListener("DOMContentLoaded", async () => {
+      const userRole = localStorage.getItem("userRole");
+      if (userRole !== "admin") {
+        alert("Access denied. Admins only.");
+        window.location.href = "login.html"; // Redirect to login page
+        return;
+      }
+
+      // Fetch documents on page load
+      fetchDocuments();
+    });
+
+    // Fetch documents awaiting approval
+    async function fetchDocuments() {
+      const loadingIndicator = document.getElementById("loading");
+      const documentsList = document.getElementById("documentsList");
+      const noDocumentsMessage = document.getElementById("noDocuments");
+
+      // Show loading indicator
+      loadingIndicator.classList.remove("hidden");
+      documentsList.innerHTML = ""; // Clear existing content
+      noDocumentsMessage.classList.add("hidden");
+
+      try {
+        const response = await fetch("/api/documents?isApproved=false");
+        if (!response.ok) {
+          throw new Error("Failed to fetch documents.");
+        }
+
+        const documents = await response.json();
+
+        if (documents.length === 0) {
+          noDocumentsMessage.classList.remove("hidden"); // Show "no documents" message
+          return;
+        }
+
+        // Render documents
+        documentsList.innerHTML = documents
+          .map(
+            (doc) => `
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <h4 class="font-bold text-lg mb-2">${doc.title}</h4>
+            <p class="text-sm mb-2">Category: ${doc.category}</p>
+            <p class="text-sm mb-2">Level: ${doc.level}</p>
+            <p class="text-sm mb-2">Description: ${doc.description}</p>
+            <button onclick="approveDocument(${doc.id})" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+              Approve
+            </button>
+          </div>
+        `
+          )
+          .join("");
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+        alert("Failed to load documents. Please try again later.");
+      } finally {
+        // Hide loading indicator
+        loadingIndicator.classList.add("hidden");
+      }
+    }
+
+    // Approve a document
+    async function approveDocument(id) {
+      try {
+        const response = await fetch(`/api/documents/${id}/approve`, { method: "POST" });
+        if (!response.ok) {
+          throw new Error("Failed to approve document.");
+        }
+
+        alert("Document approved successfully.");
+        fetchDocuments(); // Refresh the list
+      } catch (error) {
+        console.error("Error approving document:", error);
+        alert("Failed to approve document. Please try again later.");
+      }
+    }
+  </script>
+</body>
+</html>
