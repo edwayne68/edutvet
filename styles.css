@@ -98,6 +98,25 @@ footer a:hover {
   overflow: hidden; /* Hide overflowing slides */
   position: relative;
   padding: 0 1rem; /* Add padding for better alignment */
+  background-image: url('sliders/image1.png'); /* Default background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px; /* Adjust height as needed */
+  animation: fadeBackground 20s infinite;
+}
+
+.slider-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 1;
+}
+
+.slider-container .container {
+  position: relative;
+  z-index: 2; /* Ensure text is above the overlay */
 }
 
 /* Slider Wrapper */
@@ -236,4 +255,13 @@ input:focus {
 
 #togglePassword:hover {
   color: #2563eb;
+}
+
+/* Optional: Add a fade effect for background images */
+@keyframes fadeBackground {
+  0% { background-image: url('sliders/image1.png'); }
+  25% { background-image: url('sliders/image2.png'); }
+  50% { background-image: url('sliders/image3.png'); }
+  75% { background-image: url('sliders/image4.png'); }
+  100% { background-image: url('sliders/image5.png'); }
 }
