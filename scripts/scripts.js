@@ -266,7 +266,7 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
 
 // Local Document Filtering
 const documents = [
-  { title: "Crop Protection Guide", author: "Jane Doe", category: "Agriculture", link: "#" },
+  { title: "Crop Protection Guide", author: "Edwin chesaro", category: "Agriculture", link: "#" },
   { title: "TVET Curriculum Outline", author: "Edwin Chesaro", category: "Curriculum", link: "#" },
   { title: "Lesson Plan Template", author: "Edwin Chesaro", category: "Teaching Aids", link: "#" },
 ];

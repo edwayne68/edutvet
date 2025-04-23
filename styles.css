@@ -278,3 +278,23 @@ input:focus {
   75% { background-image: url('sliders/image4.png'); }
   100% { background-image: url('sliders/image5.png'); }
 }
+
+/* Animation for Header Text */
+@keyframes fadeInWithSpacing {
+  0% {
+    opacity: 0;
+    letter-spacing: -2px;
+  }
+  50% {
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: normal;
+  }
+}
+
+.animate-header {
+  animation: fadeInWithSpacing 2s ease-in-out;
+}
