@@ -210,6 +210,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nav.parentElement.insertBefore(toggleButton, nav);
   nav.classList.add("hidden", "md:flex");
+
+  const recentDocumentsContainer = document.getElementById("recentDocuments");
+
+  // Mock data for recently uploaded documents (replace with API call if needed)
+  const recentlyUploadedDocuments = [
+    { title: "Crop Notes Level 4", type: "Notes", level: "4", link: "#" },
+    { title: "TVET Curriculum Level 5", type: "Curriculum", level: "5", link: "#" },
+    { title: "Safety Standards Level 6", type: "Occupational Standards", level: "6", link: "#" },
+    { title: "Business Plan Template", type: "Planning Documents", level: "5", link: "#" },
+    { title: "Electrical Engineering Notes", type: "Notes", level: "4", link: "#" },
+    { title: "Hospitality Curriculum", type: "Curriculum", level: "6", link: "#" },
+  ];
+
+  // Render the documents
+  recentlyUploadedDocuments.forEach((doc) => {
+    const documentCard = `
+      <div class="document-card bg-white p-4 rounded shadow">
+        <h4 class="font-bold text-lg mb-2">${doc.title}</h4>
+        <p class="text-sm mb-2">Type: ${doc.type} | Level: ${doc.level}</p>
+        <a href="${doc.link}" class="text-blue-600 hover:underline">Download</a>
+      </div>
+    `;
+    recentDocumentsContainer.innerHTML += documentCard;
+  });
 });
 
 // Simple Slider for Featured Documents
