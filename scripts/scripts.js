@@ -457,3 +457,12 @@ particlesJS("particles-js", {
   },
   retina_detect: true,
 });
+
+document.querySelectorAll("button, a").forEach((element) => {
+  element.addEventListener("click", (e) => {
+    element.classList.add("clicked");
+    setTimeout(() => {
+      element.classList.remove("clicked");
+    }, 150); // Reset after 150ms
+  });
+});

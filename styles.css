@@ -164,6 +164,26 @@ button {
   z-index: 10;
 }
 
+/* General Button Styles */
+button, a {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+/* Hover Effect */
+button:hover, a:hover {
+  background-color: #2563eb; /* Darker blue */
+  color: #ffffff; /* White text */
+  transform: scale(1.05); /* Slightly enlarge */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+/* Click Effect */
+button:active, a:active {
+  transform: scale(0.95); /* Slightly shrink */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   header nav {
