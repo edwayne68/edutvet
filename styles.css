@@ -3,11 +3,26 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradient background */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Dark Mode Styles */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark {
+  --bg-color: #1a202c; /* Dark background */
+  --text-color: #f7fafc; /* Light text */
 }
 
 /* Navbar */
 header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 header h1 {
@@ -81,6 +96,8 @@ section#documents .grid div:hover {
 footer {
   background-color: #1f2937;
   color: #ffffff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 footer a {
@@ -110,7 +127,7 @@ footer a:hover {
   z-index: 1;
 }
 
-.slider-container .container {
+slider-container .container {
   position: relative;
   z-index: 2; /* Ensure text is above the overlay */
 }
