@@ -136,7 +136,12 @@ button {
 @media (max-width: 768px) {
   header nav {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+  }
+
+  header .container {
+    flex-wrap: wrap;
+    text-align: center;
   }
 
   footer .flex {
@@ -148,6 +153,31 @@ button {
     margin-bottom: 1.5rem;
   }
 
+  footer .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  section.bg-blue-50 {
+    padding: 8rem 1rem;
+  }
+
+  section.bg-blue-50 h2 {
+    font-size: 2rem;
+  }
+
+  section.bg-blue-50 p {
+    font-size: 1rem;
+  }
+
+  section#documents .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slider img {
+    max-height: 200px;
+  }
+
   .slide img {
     height: auto; /* Ensure images scale properly on smaller screens */
   }
@@ -157,6 +187,12 @@ button {
   .slide img {
     height: 8rem; /* Further reduce height for very small screens */
   }
+}
+
+/* Slider: Ensure images scale properly */
+.slider img {
+  max-height: 300px;
+  object-fit: cover;
 }
 
 /* Form Container */

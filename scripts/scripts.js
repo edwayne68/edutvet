@@ -198,6 +198,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Mobile Menu Toggle
+  const nav = document.querySelector("header nav");
+  const toggleButton = document.createElement("button");
+  toggleButton.textContent = "Menu";
+  toggleButton.classList.add("bg-blue-600", "text-white", "px-4", "py-2", "rounded", "md:hidden");
+  toggleButton.addEventListener("click", () => {
+    nav.classList.toggle("hidden");
+  });
+
+  nav.parentElement.insertBefore(toggleButton, nav);
+  nav.classList.add("hidden", "md:flex");
 });
 
 // Simple Slider for Featured Documents
@@ -379,4 +391,14 @@ toggleButton.addEventListener('click', () => {
   htmlElement.classList.toggle('dark');
   const isDarkMode = htmlElement.classList.contains('dark');
   darkModeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon'; // Toggle between sun and moon icons
+});
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 });
